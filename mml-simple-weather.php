@@ -1,4 +1,4 @@
-\<?php
+<?php
 /*
 Plugin Name: MML Simple Weather
 Plugin URI: http://www.mymedialab.co.uk/opensource/wp-simple-weather/
