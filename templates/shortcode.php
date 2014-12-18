@@ -7,40 +7,90 @@
 */ ?>
 <div class="weather-shortcode-expanded">
     <div class="weather-now">
-        <img src="<?php echo $imageset . $feed['item']['condition']['code']; ?>.png">
-        <p>
-            <?php echo $city; ?>
-        </p>
 
-        <?php echo $feed['item']['condition']['temp']; ?><sup>°</sup><?php echo strtoupper($unit); ?>
+        <?php if ($display_icon) : ?>
+            <img src="<?php echo $imageset . $feed['item']['condition']['code']; ?>.png">
+        <?php endif; ?>
 
-        <?php echo $conditions[$feed['item']['condition']['code']]; ?>
+        <?php if ($display_city) : ?>
+            <p>
+                <?php echo $city; ?>
+            </p>
+        <?php endif; ?>
 
-        <?php echo $terms[0]; ?>: <?php echo round($feed['wind']['speed'],1); ?> k/h
+        <?php if ($display_temp) : ?>
+            <p>
+                <?php echo $feed['item']['condition']['temp']; ?><sup>°</sup><?php echo strtoupper($unit); ?>
+            </p>
+        <?php endif; ?>
 
-        <?php echo $terms[1] . ':' . $windDirection; ?>
 
-        <?php echo $terms[7] . " : " . $feed['astronomy']['sunrise'] . " | " . $terms[8] . " : " . $feed['astronomy']['sunset'];  ?>
+        <?php if ($display_description) : ?>
+            <?php echo $conditions[$feed['item']['condition']['code']]; ?>
+        <?php endif; ?>
 
-        <?php echo $terms[9] . " : " . $feed['atmosphere']['humidity'] ." %  | " . $terms[10] . " : " . $feed['atmosphere']['visibility'] . " km | " . $terms[11] . " : " . round($feed['atmosphere']['pressure']/1000, 2) . " bar"; ?>
+        <dl class="weather-summary">
+
+            <?php if ($display_wind_speed) : ?>
+                <dt><?php echo $terms[0]; ?></dt>
+                <dd><?php echo round($feed['wind']['speed'],1); ?> k/h</dd>
+            <?php endif; ?>
+
+            <?php if ($display_wind_direction) : ?>
+                <dt><?php echo $terms[1] ?></dt>
+                <dd><?php echo $windDirection; ?></dd>
+            <?php endif; ?>
+
+            <?php if ($display_sunrise) : ?>
+                <dt><?php echo $terms[7]; ?></dt>
+                <dd><?php echo $feed['astronomy']['sunrise']; ?></dd>
+            <?php endif; ?>
+
+            <?php if ($display_sunset) : ?>
+                <dt><?php echo $terms[8]; ?></dt>
+                <dd><?php echo $feed['astronomy']['sunset']; ?></dd>
+            <?php endif; ?>
+
+            <?php if ($display_humidity) : ?>
+                <dt><?php echo $terms[9]; ?></dt>
+                <dd><?php echo $feed['atmosphere']['humidity'] ." %"; ?></dd>
+            <?php endif; ?>
+
+            <?php if ($display_visibility) : ?>
+                <dt><?php echo $terms[10]; ?></dt>
+                <dd><?php echo $feed['atmosphere']['visibility'] . " km"; ?></dd>
+            <?php endif; ?>
+
+            <?php if ($display_pressure) : ?>
+                <dt><?php echo $terms[11]; ?></dt>
+                <dd><?php echo round($feed['atmosphere']['pressure']/1000, 2) . " bar"; ?></dd>
+            <?php endif; ?>
+
+        </dl>
+
     </div>
 
-    <?php foreach ($feed['item']['forecast'] as $i => $day) : ?>
-        <?php if ($i > 2) { break; } ?>
-        <div class="day-summary">
-            <img src="<?php echo $imageset . $day['code']; ?>.png" alt="Weather icon">
+    <?php if ($display_forecast) :
+        foreach ($feed['item']['forecast'] as $i => $day) : ?>
+            <?php if ($i > 2) { break; } ?>
 
-            <?php echo $terms[$days[$day['day']]]; ?>
+            <div class="day-summary">
+                <?php if ($display_forecast_icon) : ?>
+                    <img src="<?php echo $imageset . $day['code']; ?>.png" alt="Weather icon">
+                <?php endif; ?>
 
-            <span>
-                <?php echo $day['high']; ?><sup>°</sup><?php echo $unit; ?>
-            </span>
-            <span>
-                <?php echo $day['low']; ?><sup>°</sup><?php echo $unit; ?>
-            </span>
-        </div>
+                <?php echo $terms[$days[$day['day']]]; ?>
 
-    <?php endforeach;?>
+                <span>
+                    <?php echo $day['high']; ?><sup>°</sup><?php echo $unit; ?>
+                </span>
+                <span>
+                    <?php echo $day['low']; ?><sup>°</sup><?php echo $unit; ?>
+                </span>
+            </div>
+
+        <?php endforeach;
+    endif; ?>
 
     <a href="https://www.yahoo.com/?ilc=401" target="_blank"> <img src="https://poweredby.yahoo.com/purple.png" width="134" height="29"/> </a>
 
