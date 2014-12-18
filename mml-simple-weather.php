@@ -29,16 +29,23 @@ function mml_weather_setup() {
 
     $pluginRoot = __DIR__;
     $options = array(
-        'mml_weather_city', 'mml_weather_woeid', 'mml_weather_unit', 'mml_weather_language',
-        'mml_weather_imageset', 'mml_weather_cssfile', 'mml_weather_nocss'
+        'mml_weather_city', 'mml_weather_woeid', 'mml_weather_unit', 'mml_weather_language', 'mml_weather_imageset',
+        'mml_weather_cssfile', 'mml_weather_nocss', 'mml_weather_display_icon', 'mml_weather_display_temp',
+        'mml_weather_display_wind_speed', 'mml_weather_display_wind_direction', 'mml_weather_display_sunrise',
+        'mml_weather_display_sunset', 'mml_weather_display_humidity', 'mml_weather_display_visibility',
+        'mml_weather_display_pressure', 'mml_weather_display_forecast', 'mml_weather_display_forecast_icon'
     );
 
     include $pluginRoot . '/src/api.php'; // Y U NO AUTOLOAD?
+    include $pluginRoot . '/src/install.php'; // Y U NO AUTOLOAD?
     include $pluginRoot . '/src/shortcode.php'; // Y U NO AUTOLOAD?
     include $pluginRoot . '/src/widget.php'; // Y U NO AUTOLOAD?
 
     $Shortcode = new mml_simple_weather_shortcode($pluginRoot, $options);
     $Shortcode->register();
+
+    $Install = new mml_simple_weather_install();
+    $Install->register($options);
 
     // Yuck. The things we do for backcompat.
     add_action('widgets_init',

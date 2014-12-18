@@ -34,6 +34,8 @@ class mml_simple_weather_admin
         $imagesets = $this->getImagesets();
         $selectedImageset = get_option('mml_weather_imageset');
 
+        $displayOptions = $this->getDisplayOptions();
+
         include $this->pluginRoot . '/templates/admin_options.php';
     }
 
@@ -87,5 +89,18 @@ class mml_simple_weather_admin
         }
 
         return $all;
+    }
+
+    protected function getDisplayOptions()
+    {
+        $options = array();
+        foreach ($this->settings as $setting) {
+
+            if (strpos($setting, 'mml_weather_display_') === 0) {
+                $options[$setting] = ucwords(str_replace(array('-', '_'), ' ', substr($setting, 20)));
+            }
+        }
+
+        return $options;
     }
 }

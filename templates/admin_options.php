@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
 
         <table class="form-table">
 
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     Select Your Language
                 </th>
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 </td>
             </tr>
 
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     Name Your City
                 </th>
@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 </td>
             </tr>
 
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     City WOEID
                 </th>
@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 </td>
             </tr>
 
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     Temperature Unit
                 </th>
@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 </td>
             </tr>
 
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     CSS file
                 </th>
@@ -81,7 +81,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                     </p>
                 </td>
             </tr>
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     Don't include a CSS file; I can handle it.
                 </th>
@@ -94,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 </td>
             </tr>
 
-            <tr valign="top">
+            <tr>
                 <th scope="row">
                     Select Weather Image-set
                 </th>
@@ -111,7 +111,22 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 </td>
             </tr>
 
-            <tr valign="top">
+            <tr>
+                <th scope="row">
+                    Widget Should include
+                </th>
+                <td>
+                    <?php foreach ($displayOptions as $option => $label) : ?>
+                        <p>
+                             <label>
+                                <input type="checkbox" value="yes" name="<?php echo $option ?>" <?php if (get_option($option)) { echo "selected='selected'"; } ?>>
+                                <?php echo $label ?>
+                            </label>
+                        </p>
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+            <tr>
                 <th scope="row">
                     Shortcode
                 </th>
