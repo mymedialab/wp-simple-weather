@@ -119,7 +119,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                     <?php foreach ($displayOptions as $option => $label) : ?>
                         <p>
                              <label>
-                                <input type="checkbox" value="yes" name="<?php echo $option ?>" <?php if (get_option($option)) { echo "selected='selected'"; } ?>>
+                                <input type="checkbox" value="yes" name="<?php echo $option ?>" <?php if (get_option($option)) { echo "checked='checked'"; } ?>>
                                 <?php echo $label ?>
                             </label>
                         </p>
