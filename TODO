@@ -1,0 +1,23 @@
+Make a quick marketing site.
+Limit what goes to the page with options!
+Enqueue styles
+Check for presence of feed variables
+
+Cache the built html instead of the raw data?
+Reformat language file to be better
+
+Uninstall
+
+OPTIONS
+
+mml_weather_language
+mml_weather_city
+mml_weather_woeid
+mml_weather_unit
+mml_weather_imageset
+mml_weather_cssfile
+mml_weather_nocss
+
+ADD TO README
+
+weather-images/youriconset directory
