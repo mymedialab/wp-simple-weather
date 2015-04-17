@@ -5,6 +5,7 @@ Check for presence of feed variables
 
 Cache the built html instead of the raw data?
 Reformat language file to be better
+Make cache time adjustable and add a clear cache button
 
 Uninstall
 

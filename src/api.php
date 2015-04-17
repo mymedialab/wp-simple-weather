@@ -19,7 +19,7 @@ class mml_simple_weather_api
             return $cached;
         }
 
-        $query = "select * from weather.forecast where location = '$location' and u = '$unit'";
+        $query = "select * from weather.forecast where location = '$location' and u = '$degrees'";
         $queryString = http_build_query(array(
             'q' => $query,
             'format' => 'json'
