@@ -60,8 +60,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } ?>
                 <td>
                     <select name="mml_weather_unit">
                         <?php $selected = esc_attr(get_option('mml_weather_unit')); ?>
-                        <option value="c" <?php if $selected === 'c' ?>selected="selected"<?php endif; ?>>c</option>
-                        <option value="f" <?php if $selected === 'f' ?>selected="selected"<?php endif; ?>>f</option>
+                        <option value="c" <?php if ($selected === 'c') : ?>selected="selected"<?php endif; ?>>c</option>
+                        <option value="f" <?php if ($selected === 'f') : ?>selected="selected"<?php endif; ?>>f</option>
                     </select>
                 </td>
             </tr>
